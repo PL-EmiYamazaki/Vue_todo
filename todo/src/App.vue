@@ -2,14 +2,15 @@
 <div id="app">
     <input type="text" v-model="inputTask.name">
     <input type="datetime-local" name="dead-line" min="2018-06-07T00:00" max="2100-06-14T00:00" v-model="inputTask.deadLine">
-    <button @click="addTask()">追加</button>
+    <button @click="addTask()" :disabled="addButtonState()">追加</button>
     <ul>
         <ul class="task" v-for="task in list" :key="task.id">
             <li> {{ task.name }} </li>
             <li> {{ task.deadLine }} </li>
             <li> {{ task.created_at }} </li>
             <li> {{ task.completed_at }} </li>
-            <li> {{ task.status }} </li>
+            <button >{{ status[task.status] }}</button>
+            <button @click="deleteTask(task.id)">削除</button>
         </ul>
     </ul>
 </div>
@@ -28,50 +29,61 @@ export default {
 
   data() {
     return {
-      options: [
-        {
-          value: 0,
-          label: '未着手'
-        },
-        {
-          value: 1,
-          label: '作業中'
-        },
-        {
-          value: 2,
-          label: '完了'
-        }
-      ],
+      status: ['未着手', '作業中', '完了'],
       list: [],
       inputTask: {
         name: '',
-        deadLine: '',
+        deadLine: null,
+      },
+      addButtonState(){
+        if(this.inputTask.name) {
+          return false;
+        } else {
+          return true;
+        }
       }
     }
   },
     methods: {
+      getNewId(array){
+        if (!array.length) {
+          return 1;
+        } else {
+          let max_id = Math.max.apply(null, array.map(function (o) {
+            return o.id;
+          }))
+          return ++max_id;
+        }
+      },
+      getDeadLine(now){
+        const deadLine = dateformat(this.inputTask.deadLine, 'yyyy年mm月dd日 HH:MM');
+        if(now === deadLine){
+          return '------------';
+        } else {
+          return deadLine;
+        }
+      },
       addTask() {
         // 現在時刻取得
-        const now = new Date();
-        // id取得
-        let max_id = Math.max.apply(null, this.list.map(function (o) {
-            return o.id;
-        }))
-        const new_id = ++max_id;
-        const new_todo = {
-            id: new_id,
+        const now = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM')
+        const newTodo = {
+            id: this.getNewId(this.list),
             name: this.inputTask.name,
             status: 0,
-            deadLine: dateformat(this.inputTask.deadLine, 'yyyy年mm月dd日 HH:MM'),
-            created_at: dateformat(now, 'yyyy年mm月dd日 HH:MM'),
+            deadLine: this.getDeadLine(now),
+            created_at: now,
             completed_at: '----年--月--日 --:--'
         };
-        console.log(new_todo);
-        this.list.push(new_todo);
+        this.list.push(newTodo);
+        this.inputTask.name = '';
+        this.inputTask.deadLine = null;
+      },
+      deleteTask(targetId){
+        let list = this.list;
+        list.some(function(v, i){
+          if (v.id==targetId) list.splice(i,1);
+        });
       }
-    },
-    watch: {
-
     }
 }
 </script>
