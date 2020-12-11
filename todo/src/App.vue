@@ -1,19 +1,19 @@
 <template>
-<div id="app">
+  <div id="app">
     <input type="text" v-model="inputTask.name">
     <input type="datetime-local" name="dead-line" min="2018-06-07T00:00" max="2100-06-14T00:00" v-model="inputTask.deadLine">
     <button @click="addTask()" :disabled="addButtonState()">追加</button>
     <ul>
-        <ul class="task" v-for="task in list" :key="task.id">
-            <li> {{ task.name }} </li>
-            <li> {{ task.deadLine }} </li>
-            <li> {{ task.created_at }} </li>
-            <li> {{ task.completed_at }} </li>
-            <button >{{ status[task.status] }}</button>
-            <button @click="deleteTask(task.id)">削除</button>
-        </ul>
+      <ul class="task" v-for="task in list" :key="task.id" v-bind:class="{ bgColor: task.status == 3, color: task.status == 3}">
+        <li> {{ task.name }} </li>
+        <li> {{ task.deadLine }} </li>
+        <li> {{ task.created_at }} </li>
+        <li> {{ task.completed_at }} </li>
+        <button @click="changeStatus(task.id)" v-show="task.status < 3">{{ status[task.status] }}</button>
+        <button @click="deleteTask(task.id)">削除</button>
+      </ul>
     </ul>
-</div>
+  </div>
 </template>
 
 <script>
@@ -29,7 +29,7 @@ export default {
 
   data() {
     return {
-      status: ['未着手', '作業中', '完了'],
+      status: ['未着手', '作業中', '完了', ''],
       list: [],
       inputTask: {
         name: '',
@@ -65,7 +65,7 @@ export default {
       },
       addTask() {
         // 現在時刻取得
-        const now = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM')
+        const now = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM');
         const newTodo = {
             id: this.getNewId(this.list),
             name: this.inputTask.name,
@@ -78,10 +78,21 @@ export default {
         this.inputTask.name = '';
         this.inputTask.deadLine = null;
       },
-      deleteTask(targetId){
+      deleteTask(targetId) {
         let list = this.list;
         list.some(function(v, i){
           if (v.id==targetId) list.splice(i,1);
+        });
+      },
+      changeStatus(targetId) {
+        let list = this.list;
+        list.some(function(v){
+          if (v.id==targetId){
+            ++v.status;
+            if (v.status == 3) {
+              v.completed_at = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM');
+            }
+          }
         });
       }
     }
@@ -111,5 +122,13 @@ ul {
 
 li {
     justify-content: space-between;
+}
+
+.bgColor {
+  background-color: #dcdcdc;
+}
+
+.color {
+  color: #fff;
 }
 </style>
