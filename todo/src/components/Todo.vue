@@ -1,29 +1,40 @@
 <template>
   <div>
-    <input type="text" v-model="inputTask.name">
-      <input type="datetime-local" name="dead-line" min="2018-06-07T00:00" max="2100-06-14T00:00" v-model="inputTask.deadLine">
-      <button @click="addTask()" :disabled="addButtonState">追加</button>
-      <ul>
-        <Task 
-          v-for="task in list"
-          :key="task.id"
-          :task="task"
-          :status="status"
-          @delete-click='deleteTask'
-          @change-click='changeStatus'
-        />
-      </ul>
+    <Input
+      v-bind:value="inputTask.name"
+      v-on:input="inputTask.name = $event"
+      type="text"
+    />
+    <Input
+      v-bind:value="inputTask.deadLine"
+      v-on:input="inputTask.deadLine = $event"
+      type="datetime-local"
+    />
+
+    <button @click="addTask()" :disabled="addButtonState">追加</button>
+    <ul>
+      <Task 
+        v-for="task in list"
+        :key="task.id"
+        :task="task"
+        :status="status"
+        @delete-click='deleteTask'
+        @change-click='changeStatus'
+      />
+    </ul>
   </div>
 </template>
 
 <script>
+import Input from './Input.vue'
 import Task from './Task.vue'
 const dateformat = require('dateformat');
 
 export default {
   name: 'Todo',
   components: {
-    Task
+    Task,
+    Input,
   },
   localStorage: {
     taskKey: {
