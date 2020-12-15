@@ -4,23 +4,27 @@
       <input type="datetime-local" name="dead-line" min="2018-06-07T00:00" max="2100-06-14T00:00" v-model="inputTask.deadLine">
       <button @click="addTask()" :disabled="addButtonState">追加</button>
       <ul>
-        <ul class="task" v-for="task in list" :key="task.id" v-bind:class="{ bgColor: task.status == 3, color: task.status == 3}">
-          <li> {{ task.name }} </li>
-          <li> {{ task.deadLine }} </li>
-          <li> {{ task.created_at }} </li>
-          <li> {{ task.completed_at }} </li>
-          <button @click="changeStatus(task.id)" v-show="task.status < 3">{{ status[task.status] }}</button>
-          <button @click="deleteTask(task.id)">削除</button>
-        </ul>
+        <Task 
+          v-for="task in list"
+          :key="task.id"
+          :task="task"
+          :status="status"
+          @delete-click='deleteTask'
+          @change-click='changeStatus'
+        />
       </ul>
   </div>
 </template>
 
 <script>
+import Task from './Task.vue'
 const dateformat = require('dateformat');
 
 export default {
   name: 'Todo',
+  components: {
+    Task
+  },
   localStorage: {
     taskKey: {
       type: Array
@@ -112,27 +116,3 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-ul {
-    list-style-type: none;
-}
-
-.task {
-    display: flex;
-    width: 80%;
-    margin: auto;
-    justify-content: space-between;
-}
-
-li {
-    justify-content: space-between;
-}
-
-.bgColor {
-  background-color: #dcdcdc;
-}
-
-.color {
-  color: #fff;
-}
-</style>
