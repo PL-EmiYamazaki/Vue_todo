@@ -6,8 +6,8 @@
         <li> {{ task.deadLine }} </li>
         <li> {{ task.created_at }} </li>
         <li> {{ task.completed_at }} </li>
-        <button @click="changeStatus(task.id)" v-show="task.status < 3">{{ status[task.status] }}</button>
-        <button @click="deleteTask(task.id)">削除</button>
+        <button @click="changeStatus(task)" v-show="task.status < 3">{{ status[task.status] }}</button>
+        <button @click="deleteTask(task)">削除</button>
       </ul>
     </li>
   </div>
@@ -20,15 +20,14 @@ export default {
 
   props: {
     status: Array,
-    list: Array,
     task: Object,
   },
   methods: {
-    deleteTask(targetId) {
-      this.$emit("delete-click", targetId);
+    deleteTask(task) {
+      this.$emit("delete-click", task);
     },
-    changeStatus(targetId) {
-      this.$emit("change-click", targetId);
+    changeStatus(task) {
+      this.$emit("change-click", task);
     }
   }
 }

@@ -105,22 +105,16 @@ export default {
       this.inputTask.name = '';
       this.inputTask.deadLine = null;
     },
-    deleteTask(targetId) {
+    deleteTask(task) {
       let list = this.list;
-      list.some(function(v, i){
-        if (v.id==targetId) list.splice(i,1);
-      });
+      const index = this.list.indexOf(task)
+      list.splice(index, 1)
     },
-    changeStatus(targetId) {
-      let list = this.list;
-      list.some(function(v){
-        if (v.id==targetId){
-          ++v.status;
-          if (v.status == 3) {
-            v.completed_at = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM');
-          }
-        }
-      });
+    changeStatus(task) {
+      ++task.status;
+      if (task.status == 3) {
+        task.completed_at = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM');
+      }
     }
   }
 }
