@@ -11,6 +11,12 @@
       type="datetime-local"
     />
 
+    <select v-model="selected">
+      <option v-for="option in options" :key="option.status" v-bind:value="option.status">
+        {{ option.text }}
+      </option>
+    </select>
+
     <button @click="addTask()" :disabled="addButtonState">追加</button>
     <ul>
       <Task 
@@ -54,11 +60,47 @@ export default {
       this.$localStorage.set('taskKey', this.list);
       },
       deep: true
+    },
+    selected: function () {
+      switch (this.selected) {
+        case 0:
+          this.list.sort(function(a, b) {
+            return a.id < b.id ? -1 : 1;
+          });
+          break;
+        case 1:
+          this.list.sort(function(a, b) {
+            return a.deadLine < b.deadLine ? -1 : 1;
+          });
+          break;
+        case 2:
+          this.list.sort(function(a, b) {
+            return a.completed_at < b.completed_at ? -1 : 1;
+          });
+          break;
+        case 3:
+          this.list.sort(function(a, b) {
+            return a.name < b.name ? -1 : 1;
+          });
+          break;
+        default:
+          this.list.sort(function(a, b) {
+            return a.id < b.id ? -1 : 1;
+          });
+          break;
+      }
     }
   },
 
   data() {
     return {
+      selected: 0,
+      options: [
+        { text: '作成日', status: 0 },
+        { text: '期日', status: 1 },
+        { text: '完了日', status: 2 },
+        { text: 'タスク名', status: 3 }
+      ],
       status: ['未着手', '作業中', '完了', ''],
       list: [],
       inputTask: {
