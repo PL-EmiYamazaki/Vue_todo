@@ -94,6 +94,7 @@ export default {
 
   data() {
     return {
+      id: 0,
       selected: 0,
       options: [
         { text: '作成日', status: 0 },
@@ -114,16 +115,6 @@ export default {
     this.list = this.$localStorage.get('taskKey')
   },
   methods: {
-    getNewId(array){
-      if (!array.length) {
-        return 1;
-      } else {
-        let max_id = Math.max.apply(null, array.map(function (o) {
-          return o.id;
-        }))
-        return ++max_id;
-      }
-    },
     getDeadLine(now){
       const deadLine = dateformat(this.inputTask.deadLine, 'yyyy年mm月dd日 HH:MM');
       if(now === deadLine){
@@ -135,8 +126,9 @@ export default {
     addTask() {
       // 現在時刻取得
       const now = dateformat(new Date(), 'yyyy年mm月dd日 HH:MM');
+      let newId = this.id++;
       const newTodo = {
-          id: this.getNewId(this.list),
+          id: newId,
           name: this.inputTask.name,
           status: 0,
           deadLine: this.getDeadLine(now),
@@ -161,5 +153,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
