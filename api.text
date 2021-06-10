@@ -1,0 +1,164 @@
+{
+    "company_data": {
+        "address": "string: Companies.address",
+        "agreement": "number: Companies.agreement",
+        "contract_unit": "number: Companies.contract_unit",
+        "end_date": "date: Companies.end_date",
+        "memo": "string: Companies.memo",
+        "name": "string: Companies.name",
+        "start_date": "date: Companies.start_date",
+        "suppliers_code": "string: Companies.suppliers_code",
+        "tel": "string: Companies.tel"
+    },
+    "user": {
+        "mail_address": "string: Users.mail_address"
+        "name": "string: Users.name"
+    },
+    "active_flag": "boolean: Companies.active_flag",
+    "address": "string: Companies.workspace",
+    "workspace_name": "string: Companies.workspace_name"
+}
+
+
+
+
+{
+    "id": "number Companies.id",
+    "company_key": "number Companies.company_key",
+    "name": "string Companies.name",
+    "profile_icon": "string Companies.profile_icon",
+    "workspace": "string Companies.workspace",
+    "workspace_name": "string Companies.workspace_name",
+    "agreement": "number Companies.agreement",
+    "tel":  "number Companies.tel",
+    "suppliers_code": "string Companies.suppliers_code",
+    "address": "string Companies.address",
+    "report_flag": "boolean Companies.report_flag",
+    "memo": "string Companies.memo",
+    "start_date":  "date Companies.start_date",
+    "end_date":"date Companies.end_date",
+    "sso_flag": "boolean Companies.sso_flag",
+    "active_flag": "boolean Companies.active_flag",
+    "created_by": "number Companies.created_by",
+    "created_at": "date Companies.created_at",
+    "updated_by": "number Companies.updated_by",
+    "updated_at": "date Companies.updated_at",
+    "deleted_by": "number Companies.deleted_by",
+    "deleted_at": "date Companies.deleted_at",
+    "billing_date": "string Companies.billing_date",
+    "content_type": "string Companies.content_type",
+    "contract_unit": "number: Companies.contract_unit",
+    "mail_address": "string Companies.content_type",
+    "user_name": "string Companies.user_name",
+}
+
+
+
+
+
+    [
+    {
+      "user_id": "number: Users.id",
+      "user_key": "string: Users.user_key",
+      "company_id": "number: Companies.id",
+      "name": "string: Users.name",
+      "name_kana": "string: Users.name_kana",
+      "mail_address": "string: Users.mail_address",
+      "role": "number: Users.role",
+      "profile_icon": {},
+      "support_count": "number: Companies.support_count",
+      "support_counts": "number: Companies.support_counts",
+      "invited_flag": "boolean: Users.invited_flag",
+      "entry_flag": "boolean: Users.entry_flag",
+      "sso_flag": "boolean: Users.sso_flag",
+      "time_zone": "string: Users.time_zone",
+      "language": "string: Users.language",
+      "logged_in": "boolean: Users.logged_in",
+      "token": "string: Users.token",
+      "active_flag": "boolean: Users.active_flag",
+      "created_by": "string: Companies.created_by",
+      "created_at": "Date: Companies.created_at",
+      "updated_by": "string: Companies.updated_by",
+      "updated_at": "Date: Companies.updated_at",
+      "deleted_by": "string: Companies.deleted_by",
+      "deleted_at": "Date: Companies.deleted_at",
+      "groups": [
+          {
+              "group_id": "number: group_Users.group_id",
+              "name": "string: groups.name",
+              "permission": "number: group_Users.permission"
+          }
+      ]
+    }
+  ]
+
+
+
+    
+
+
+
+
+  {
+    "active_flag": "boolean: Users.active_flag",
+    "agreement": "number Users.agreement",
+    "content_type": "string Companies.content_type",
+    "created_by": "string: Companies.created_by",
+    "created_at": "Date: Companies.created_at",
+    "deleted_by": "string: Companies.deleted_by",
+    "deleted_at": "Date: Companies.deleted_at",
+    "company_icon_path": "string: Companies.profile_icon",
+    "company_id": "number Users.company_id",
+    "company_key": "number Companies.company_key",
+    "company_name": "string Companies.name",
+    "end_date":"date Companies.end_date",
+    "entry_flag": "boolean: Users.entry_flag",
+    "id": "number: Users.id",
+    "image_path": "string: Users.profile_icon",
+    "invited_flag": "boolean: Users.invited_flag",
+    "language": "string: Users.language",
+    "logged_in": "boolean: Users.logged_in",
+    "mail_address": "string: Users.mail_address",
+    "name": "string: Users.name",
+    "name_kana": "string: Users.name_kana",
+    "one_time_token": "string: Users.one_time_token",
+    "profile_icon": "string: Users.profile_icon",
+    "role": "number: Users.role",
+    "sso_flag": "boolean: Users.sso_flag",
+    "support_count": "number: Companies.support_count",
+    "support_counts": "number: Companies.support_counts",
+    "start_date":  "date Companies.start_date",
+    "time_zone": "string: Users.time_zone",
+    "user_icon_path": "string: Users.user_icon_path",
+    "user_key": "string: Users.user_key",
+    "workspace_name": "string Companies.workspace_name",
+  }
+
+
+    active_flag: true
+    company_id: 1
+    content_type: "image/png"
+    created_at: "2020-09-17T19:12:32.000+09:00"
+    created_by: 13
+    deleted_at: null
+    deleted_by: null
+    entry_flag: true
+    id: 268
+    image_path: "https://cocomite-devlop.s3.ap-northeast-1.amazonaws.com/356a192b7913b04c54574d18c28d46e6395428ab/Users/4c94e1200ee42edb181a36ca6b377c6fecf41941.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARURFFIZYCIAZGSV7%2F20201221%2Fap-northeast-1%2Fs3%2Faws4_request&X-Amz-Date=20201221T080244Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=6f469e639dcab4cbb9ba8413b5c9e62cf3e26064e852e8e1d162ee6b33f61f30"
+    invited_flag: false
+    language: "JA"
+    logged_in: false
+    mail_address: "emi.yamazaki@person-link.co.jp"
+    name: "山崎テスト"
+    name_kana: "ヤマザキ"
+    one_time_token: null
+    profile_icon: "356a192b7913b04c54574d18c28d46e6395428ab/Users/4c94e1200ee42edb181a36ca6b377c6fecf41941.png"
+    role: 4
+    sso_flag: false
+support_count: null
+support_counts: null
+time_zone: "Asia"
+token: "eyJraWQiOiJmV1lnTlFGQU9saGw2OEhhM1wvNXd6Rm9obnZJTTlURGNRc0dxaWZkbVJQTT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlODBiZGE5ZS02NzQ4LTRkZmYtOTgyMy1kN2ZjOTRiMjZkY2UiLCJldmVudF9pZCI6ImJkNTBjYjc5LWYzMGItNGVkMy05OWIxLWFhMTkyZDk4NmM5MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2MDgxOTQ2NjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1ub3J0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1ub3J0aGVhc3QtMV9ORjB4VmIwQzAiLCJleHAiOjE2MDgxOTgyNjgsImlhdCI6MTYwODE5NDY2OCwianRpIjoiODQ0ZGY2ZGYtNmUxNC00NGYxLWEzMDMtNDVkMDM0ODFjYWFlIiwiY2xpZW50X2lkIjoiNDBscjJ0NW5zZWExZWk2Y25vZGsxcHZlcGIiLCJ1c2VybmFtZSI6ImNHVnljMjl1VEdsdWF3PT1fWlcxcExubGhiV0Y2WVd0cFFIQmxjbk52Ymkxc2FXNXJMbU52TG1wdyJ9.NtzF3eeLlpyoayIhoOWymKg-0pDb8IV2VqU2Giwp7OxCj2DIFMRQlXGK_fT2xvNTTLeqPqpwA0obj9rwwjApZX8WnQ3P6HiwyM8KfRZEdTg_7OhKemlYlRP0IaoWbmJiZM5kX0IjtedEiey4Upg3zTfzWixph1gezRgiKckelt62Se8C6LKlsawxZaixy_l9djSPVUBq2kZNd_qZHhVMeVPwelv5PBQtd4e-_JEghcNoFoBDUqeMqiDexj5fLfeD8-lCBFbXpBrv0KjpngiXJW4ImmfnkloLyiSr1xstdTyBBvjCgyEug5N0VIE31tCc92MWeRn1elx9RQtV4aVOBg"
+updated_at: "2020-12-21T17:02:44.000+09:00"
+updated_by: 268
+user_key: "d5f0d9102728
